@@ -21,10 +21,14 @@ namespace Xamarin.EX01FIAP.Views
         private void SwitchCell_OnChanged(object sender, ToggledEventArgs e)
         {
             if (swRecebeEmail.On)
+            {
                 txtEmail.IsVisible = true;
+                btnSalvar.IsVisible = true;
+            }
             else
             {
                 txtEmail.IsVisible = false;
+                btnSalvar.IsVisible = false;
                 txtEmail.Text = null;
             }
         }

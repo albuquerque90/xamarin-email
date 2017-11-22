@@ -18,9 +18,6 @@ namespace Xamarin.EX01FIAP.ViewModel
         public Model.Model ConfigModel { get; set; }
         public Model.Model Config { get; set; } = new Model.Model();
 
-
-
-        // UI Events
         public OnAdicionarEmailCMD OnAdicionarEmailCMD { get; }
         public OnVerificarEmailCMD OnVerificarEmailCMD { get; }
         public ICommand OnNovoCMD { get; private set; }
@@ -41,9 +38,6 @@ namespace Xamarin.EX01FIAP.ViewModel
         {
             try
             {
-                //if (paramModel == null)
-                //    throw new Exception("Usuário inválido");
-
                 Config = paramModel;
                 App.Current.MainPage.Navigation.PopAsync();
             }
@@ -58,10 +52,9 @@ namespace Xamarin.EX01FIAP.ViewModel
             try
             {
                 if (paramModel.Email == null)
-                    //throw new Exception("E-mail não autorizado");
                     App.Current.MainPage.DisplayAlert("Mensagem", "E-mail não autorizado", "OK");
                 else
-                    App.Current.MainPage.DisplayAlert("Mensagem", paramModel.Email, "OK");
+                    App.Current.MainPage.DisplayAlert("Mensagem", $"E-mail enviado para {paramModel.Email}", "OK");
 
             }
             catch (Exception ex)
@@ -100,12 +93,8 @@ namespace Xamarin.EX01FIAP.ViewModel
         }
         public event EventHandler CanExecuteChanged;
         public void DeleteCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        public bool CanExecute(object parameter)
-        {
-            if (parameter != null) return true;
+        public bool CanExecute(object parameter) => true;
 
-            return false;
-        }
         public void Execute(object parameter)
         {
             configVM.AdicionarEmail(parameter as Model.Model);

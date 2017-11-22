@@ -20,10 +20,12 @@
             </TableView>
 
             <StackLayout Grid.Row="1">
-                <Entry x:Name="txtEmail" Placeholder="Entre com e-mail" IsVisible="False" Text="{Binding Model.Email}"/>
-                <Button x:Name="btnSalvar" Text="Salvar" 
+                <Entry x:Name="txtEmail" Placeholder="Entre com e-mail" IsVisible="False" Text="{Binding ConfigModel.Email}"/>
+
+                <Button x:Name="btnSalvar" Text="Salvar" IsVisible="False"
                         Command="{Binding OnAdicionarEmailCMD}"
-                        CommandParameter="{Binding Model}" />
+                        CommandParameter="{Binding ConfigModel}" 
+                        />
             </StackLayout>
 
         </Grid>
